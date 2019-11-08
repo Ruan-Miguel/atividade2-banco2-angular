@@ -6,16 +6,17 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DadosService {
 
-  dadosSvg = `http://localhost:3000/getSvg/apodi`
-  dadosView = `http://localhost:3000/getViewBox/apodi`
+  dadosSvg = `http://localhost:3000/getSvg/`
+  dadosView = `http://localhost:3000/getViewBox/`
 
   constructor(private http: HttpClient) { }
 
-  listar() {
-    return this.http.get<any[]>(`${this.dadosSvg}`)
+  listar(cidade) {
+    console.log(this.dadosSvg + cidade)
+    return this.http.get<any[]>(`${this.dadosSvg + cidade}`)
   }
 
-  listar2() {
-    return this.http.get<any[]>(`${this.dadosView}`)
+  listar2(cidade) {
+    return this.http.get<any[]>(`${this.dadosView + cidade}`)
   }
 }

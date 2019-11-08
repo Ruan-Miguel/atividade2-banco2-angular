@@ -9,6 +9,8 @@ import { DadosService } from '../dados.service'
 })
 export class ImpressaoComponent implements OnInit {
 
+  nome : string = ''
+
   svg: Array<any>;
   viewBox: Array<any>;
 
@@ -16,16 +18,21 @@ export class ImpressaoComponent implements OnInit {
   constructor(private dadosService: DadosService) { }
 
   ngOnInit() {
-    this.listar()
-    this.listar2()
   }
 
-  listar() {
-    this.dadosService.listar().subscribe( aux => this.svg = aux[0].st_assvg)
+  total() {
+    let cidade = this.nome
+    console.log(cidade)
+    this.listar(cidade)
+    this.listar2(cidade)
   }
 
-  listar2() {
-    this.dadosService.listar2().subscribe(aux => this.viewBox = aux[0].getviewbox)
+  listar(cidade) {
+    this.dadosService.listar(cidade).subscribe( aux => this.svg = aux[0].st_assvg)
+  }
+
+  listar2(cidade) {
+    this.dadosService.listar2(cidade).subscribe(aux => this.viewBox = aux[0].getviewbox)
   }
 
 }

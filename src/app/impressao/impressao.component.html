@@ -1,3 +1,11 @@
+<label>Cidade: </label>
+<input type="text"
+[value]="nome"
+(input)="nome = $event.target.value"
+>
+<button (click)="total()">Ver</button>
+
+<br />
 <br />
 
 <svg style="height: 800px" [attr.viewBox]="viewBox">
